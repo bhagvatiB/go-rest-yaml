@@ -125,6 +125,7 @@ Project structure:
     It is a simple in-memory strorage to store application metadata. This storage is based on Radix tree. More details in [go-memdb].       (https://github.com/hashicorp/go-memdb)
 	Supports Insert and Read methods
 	[go-memdb library](https://github.com/hashicorp/go-memdb) provides Atomicity, Consistency & isolation properties. This DB will be able to handle concurrent requests.
+	Key for storing AppMetadata is "<Title>_<version>"
 
     - #### entity/
 
