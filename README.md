@@ -19,12 +19,12 @@ You must have golang installed on your machine
 
 Checkout the reposority
 ```
-git clone https://github.com/bhagvatiB/go-rest-api.git
+git clone https://github.com/bhagvatiB/go-rest-yaml.git
 ```
 
 Go to the folder
 ```
-cd go-rest-api/
+cd go-rest-yaml/
 ```
 
 To run the application, build application with.  
