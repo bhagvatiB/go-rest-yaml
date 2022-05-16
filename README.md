@@ -42,18 +42,20 @@ From a Browser or Postman try this URL
 http://localhost:8000/api/v1/createappmetadata
 
 Payload
-
 title: Valid App 1
+version: 0.0.1
 maintainers:
  - name: firstmaintainer app1
    email: firstmaintainer@hotmail.com
- - name: firstmaintainer app2
-   email: firstmaintaine2r@hotmail.com
+ - name: secondmaintainer app1
+   email: secondmaintainer@gmail.com
 company: Random Inc.
 website: https://website.com
 source: https://github.com/random/repo
 license: Apache-2.0
-description: Interesting Title Some application content, and description
+description: |
+ ### Interesting Title
+ Some application content, and description
 ```
 ```
 http://localhost:8000/api/v1/searchappmetadata
@@ -181,18 +183,20 @@ http://localhost:8000/api/v1/createappmetadata"
 Sample application metadata payload is :
 
 ```yaml
-title: My valid app
-version: 1.0.8
-company: Ecaglar Inc.
-website: https://xyz.com
-source: https://github.com/bhagvatiB/
-license: Apache-2.1
+title: Valid App 1
+version: 0.0.1
 maintainers:
-  - name: Firstname Lastname
-    email: bhag@hotmail.com
+ - name: firstmaintainer app1
+   email: firstmaintainer@hotmail.com
+ - name: secondmaintainer app1
+   email: secondmaintainer@gmail.com
+company: Random Inc.
+website: https://website.com
+source: https://github.com/random/repo
+license: Apache-2.0
 description: |
-    ### blob of markdown
-    More markdown
+ ### Interesting Title
+ Some application content, and description
 ```
 
 ## GET OPERATIONS
