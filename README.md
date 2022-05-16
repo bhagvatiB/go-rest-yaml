@@ -6,7 +6,7 @@ REST API to support read/write/search application metadata as yaml payloads with
 - GET and POST to create and get application metadata
 - Application supports yaml format
 - [Wire](https://github.com/google/wire) is used for Dependency Injections
-- [go-memdb library](https://github.com/hashicorp/go-memdb) is used to store data within memory
+- [go-memdb library](https://github.com/hashicorp/go-memdb) is used to store data within memory.
 - Dockerfile is used to create an image that can be used to run our application on any host machine.
 - [Mux](https://github.com/gorilla/mux) is used for creating & routing requests.
 - [Zap](https://github.com/uber-go/zap) logger is used to create log and it creates application log file
@@ -19,12 +19,12 @@ You must have golang installed on your machine
 
 Checkout the reposority
 ```
-git clone https://github.com/bhagvatiB/go-rest-api.git
+git clone https://github.com/bhagvatiB/go-rest-yaml.git
 ```
 
 Go to the folder
 ```
-cd go-rest-api/
+cd go-rest-yaml/
 ```
 
 To run the application, build application with.  
@@ -124,6 +124,8 @@ Project structure:
 
     It is a simple in-memory strorage to store application metadata. This storage is based on Radix tree. More details in [go-memdb].       (https://github.com/hashicorp/go-memdb)
 	Supports Insert and Read methods
+	[go-memdb library](https://github.com/hashicorp/go-memdb) provides Atomicity, Consistency & isolation properties. This DB will be able to handle concurrent requests.
+	Key for storing AppMetadata is "<Title>_<version>"
 
     - #### entity/
 
@@ -132,6 +134,7 @@ Project structure:
     - ## logger/
 
     This is where we initialise our logger to be used through out the application to maintain a log file for trouble shooting if necessry.  
+    Application logger file will be stored at ${GOPATH}/application.log
 
     - ## model/
 
@@ -151,7 +154,8 @@ Project structure:
 ## API Details
 
 Server provides a simple enpoint for GET and POST operations.  
-**/api/v1/apps**
+**POST - /api/v1/createappmetadata**
+**GET - /api/v1/searchappmetadata**
 
 **POST**  operation is used to create application metadata.   
 Yaml is supported as payload
