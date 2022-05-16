@@ -151,7 +151,8 @@ Project structure:
 ## API Details
 
 Server provides a simple enpoint for GET and POST operations.  
-**/api/v1/apps**
+**POST - /api/v1/createappmetadata**
+**GET - /api/v1/searchappmetadata**
 
 **POST**  operation is used to create application metadata.   
 Yaml is supported as payload
