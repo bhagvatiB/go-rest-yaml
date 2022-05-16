@@ -132,6 +132,7 @@ Project structure:
     - ## logger/
 
     This is where we initialise our logger to be used through out the application to maintain a log file for trouble shooting if necessry.  
+    Application logger file will be stored at ${GOPATH}/application.log
 
     - ## model/
 
