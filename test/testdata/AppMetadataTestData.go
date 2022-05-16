@@ -7,6 +7,11 @@ import (
 	"payloadrest/src/dao"
 	"payloadrest/src/model"
 	"payloadrest/src/model/request"
+	"strconv"
+	"sync"
+	"testing"
+
+	"github.com/go-playground/assert/v2"
 )
 
 func GetAppMetadata(i string) model.AppMetadata {
@@ -104,4 +109,49 @@ func InitializeServer() controller.AppMetadataController {
 	appMetadataBizLogic := bizlogic.NewAppMetadataBizLogic(inMemAppMetadataDao)
 	appMetadataController := controller.NewAppMetadataController(appMetadataBizLogic)
 	return appMetadataController
+}
+
+func TestCreateAppMetadataDaoMultiThreadingSameData(t *testing.T) {
+	var wg sync.WaitGroup
+	expectedAppMetadata := testdata.GetAppMetadata("3")
+
+	for i := 1; i <= 20000; i++ {
+		wg.Add(1)
+		go func(expectedAppMetadata model.AppMetadata) {
+
+			defer wg.Done()
+
+			inMemAppMetadataDao.CreateAppMetadataDao(expectedAppMetadata)
+		}(expectedAppMetadata)
+	}
+
+	wg.Wait()
+
+	actualAppMetadataList, _ := inMemAppMetadataDao.SearchAppMetadataDao(nil)
+
+	assert.Equal(t, len(actualAppMetadataList), 3) // two are created in above test
+}
+
+func TestCreateAppMetadataDaoMultiThreadingDifferentData(t *testing.T) {
+
+	var wg sync.WaitGroup
+
+	for i := 1; i <= 20000; i++ {
+		expectedAppMetadata := testdata.GetAppMetadata(strconv.Itoa(i))
+
+		wg.Add(1)
+
+		go func(expectedAppMetadata model.AppMetadata) {
+
+			defer wg.Done()
+
+			inMemAppMetadataDao.CreateAppMetadataDao(expectedAppMetadata)
+		}(expectedAppMetadata)
+	}
+
+	wg.Wait()
+
+	actualAppMetadataList, _ := inMemAppMetadataDao.SearchAppMetadataDao(nil)
+
+	assert.Equal(t, len(actualAppMetadataList), 20000) // 3 are created in above tests
 }
