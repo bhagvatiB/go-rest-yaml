@@ -6,7 +6,7 @@ REST API to support read/write/search application metadata as yaml payloads with
 - GET and POST to create and get application metadata
 - Application supports yaml format
 - [Wire](https://github.com/google/wire) is used for Dependency Injections
-- [go-memdb library](https://github.com/hashicorp/go-memdb) is used to store data within memory
+- [go-memdb library](https://github.com/hashicorp/go-memdb) is used to store data within memory.
 - Dockerfile is used to create an image that can be used to run our application on any host machine.
 - [Mux](https://github.com/gorilla/mux) is used for creating & routing requests.
 - [Zap](https://github.com/uber-go/zap) logger is used to create log and it creates application log file
@@ -124,6 +124,7 @@ Project structure:
 
     It is a simple in-memory strorage to store application metadata. This storage is based on Radix tree. More details in [go-memdb].       (https://github.com/hashicorp/go-memdb)
 	Supports Insert and Read methods
+	[go-memdb library](https://github.com/hashicorp/go-memdb) provides Atomicity, Consistency & isolation properties. This DB will be able to handle concurrent requests.
 
     - #### entity/
 
