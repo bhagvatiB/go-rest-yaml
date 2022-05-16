@@ -63,11 +63,11 @@ Checkout the reposority
 
 To build the image with the application run
 ```
-docker build -f Dockerfile . -t go-rest-api
+docker build -t go-rest-yaml .
 ```
 To run the image execute
 ```
-docker run -p 8080:8000 go-rest-api
+docker run -p 8080:8000 go-rest-yaml
 ```
 Try these URLs
 ```
