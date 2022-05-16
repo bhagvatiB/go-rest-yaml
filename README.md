@@ -40,8 +40,11 @@ The execute with
 From a Browser or Postman try this URL
 ```
 http://localhost:8000/api/v1/createappmetadata
+```
 
-Payload
+**Payload**
+
+```
 title: Valid App 1
 version: 0.0.1
 maintainers:
